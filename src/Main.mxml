@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" frameRate="31" creationComplete="init()" width="800" height="600">
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" frameRate="31" applicationComplete="init()" width="800" height="600">
 	<mx:Script source="Main.as" />
 	
 	<mx:ViewStack id="viewstack" left="0" top="0" right="0" bottom="0" selectedIndex="0" >
@@ -16,17 +16,20 @@
 		<mx:Canvas width="100%" height="100%" id="view_login">
 			<mx:Panel width="362" height="260" layout="absolute" horizontalCenter="0.5" verticalCenter="0.5" title="Login" color="#ffffff">
 				<mx:TextInput x="69.5" y="74" width="203" color="#000000" id="tf_name" textAlign="center" themeColor="#ffcc00"/>
-				<mx:TextInput x="69.5" y="127" width="203" color="#000000" id="tf_password" textAlign="center" themeColor="#ffcc00"/>
+				<mx:TextInput x="69.5" y="127" width="203" color="#000000" id="tf_password" textAlign="center" themeColor="#ffcc00" displayAsPassword="true"/>
 				<mx:Label y="50" text="Type your user name:" textAlign="center" color="#800000" fontWeight="bold" horizontalCenter="1" width="236"/>
 				<mx:Label y="100" text="Type your password:" textAlign="center" color="#800000" fontWeight="bold" horizontalCenter="1" width="236"/>
 				<mx:Label x="10" y="197" textAlign="center" color="#ff0000" fontWeight="bold" width="322" id="lb_errorMsg"/>
-				<mx:Button x="124.5" y="169" label="Enter" width="93" color="#333333" id="bt_enter"  themeColor="#ffcc00"/>
+				<mx:Button x="124.5" y="169" label="Enter" width="93" color="#333333" id="bt_enter" click="bt_login()" themeColor="#ffcc00"/>
 			</mx:Panel>
 		</mx:Canvas>
 		
 		<!-- Game View -->
 		<mx:Canvas width="100%" height="100%" id="view_game" creationComplete="onGameViewReady()">
-				<mx:UIComponent id="viewport" width="640" height="480" />
+			<mx:UIComponent id="viewport" width="640" height="480" />
+			<mx:TextInput width="800" height="98"  x="0" y="482" themeColor="#ffcc00" editable="false" />
+			<mx:TextInput width="800" height="20"  x="0" y="580" themeColor="#ffcc00" />
+				
 		</mx:Canvas>
 		
 		<!-- Logout View -->

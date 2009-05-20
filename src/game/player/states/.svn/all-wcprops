@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/22/trunk/src/engine/game/player/states
+END
+WalkingState.as
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/43/trunk/src/engine/game/player/states/WalkingState.as
+END
+IPlayerState.as
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/35/trunk/src/engine/game/player/states/IPlayerState.as
+END
+StandingState.as
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/43/trunk/src/engine/game/player/states/StandingState.as
+END

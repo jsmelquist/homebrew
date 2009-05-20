@@ -14,6 +14,7 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="src" />
+    <class path="..\..\..\..\Program Files\SmartFoxServerPRO_1.6.6\Flash API\Actionscript 3.0" />
   </classpaths>
   <!-- Build options -->
   <build>

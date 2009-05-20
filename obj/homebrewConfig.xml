@@ -8,6 +8,7 @@
   <compiler>
     <source-path append="true">
       <path-element>C:\Documents and Settings\Jon\My Documents\homebrew\src</path-element>
+      <path-element>C:\Program Files\SmartFoxServerPRO_1.6.6\Flash API\Actionscript 3.0</path-element>
       <path-element>C:\Program Files\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
   </compiler>

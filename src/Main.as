@@ -1,34 +1,68 @@
-﻿import flash.display.Bitmap;
+﻿
+import flash.display.Bitmap;
 import flash.display.BitmapData;
 import flash.display.Sprite;
-import engine.ticker.*;
+import it.homebrew.engine.ticker.*;
+import it.gotoandplay.smartfoxserver.*;
 
 
-protected var _ticker:Ticker;
 protected var _viewport:Sprite;
+protected var _smartFox:SmartFoxClient;
+protected var _game:NothingGame;
 
 /**
  * ...
  * @author Jon Smelquist
  */
 
-public function init():void
+private function init():void
 {
-	// Initialize new sprite to allow rendering
-	_viewport = new Sprite();
-	// Create a new ticker running at 21ms
-    _ticker = new Ticker(21);
-    _ticker.addEventListener( TickerEvent.TICK, tick );
+	// Initialize Smart Fox Client
+	_smartFox = new SmartFoxClient();
+	_smartFox.addEventListener(SFSEvent.onConnection, onConnected);
+	_smartFox.addEventListener(SFSEvent.onExtensionResponse, onExtResponse);
+	
+	// Initialize new game object
+	_game = new NothingGame(stage);
+	
+	_smartFox.connect("67.23.25.65");
 }
 
-private function tick(evt:TickerEvent):void
+private function bt_login():void
 {
-	trace("yaya");
-	_viewport.addChild(new Bitmap(new BitmapData(672, 512, false, 0xFFFFFFFF)));
+	_smartFox.login("nothing", tf_name.text, tf_password.text);
 }
-/**
- * 
- */
+
+private function onConnected(success:Boolean):void 
+{
+	if (success)
+    {
+		viewstack.selectedChild = view_login;
+	}
+}
+
+protected function onExtResponse(evt:SFSEvent):void
+{
+    var type:String = evt.params.type;
+    var data:Object = evt.params.dataObj;
+    var command:String = data._cmd;
+                        
+    switch(type)
+    {
+        case "xml":
+            if (command == "logOK")
+            {
+                viewstack.selectedChild = view_game;                                
+            }
+            else if (command == "logKO")
+            {
+                
+			}
+			break;
+   }
+                        
+}
+
 
 public function backToLoginScreen():void
 {
@@ -38,8 +72,6 @@ public function backToLoginScreen():void
 public function onGameViewReady():void
 {
 	trace("Game starting...");
-	viewport.addChild(_viewport);
-	_ticker.start();
-	
+	viewport.addChild(_game.displaySurface);
 	
 }
